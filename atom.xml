@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ljun&#39;s Blog</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-11-08T14:29:45.911Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Ljun</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo（jacman主题）修改导航链接为绝对路径</title>
+    <link href="http://yoursite.com/2018/11/08/hexo%EF%BC%88jacman%E4%B8%BB%E9%A2%98%EF%BC%89%E4%BF%AE%E6%94%B9%E5%AF%BC%E8%88%AA%E9%93%BE%E6%8E%A5%E4%B8%BA%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/"/>
+    <id>http://yoursite.com/2018/11/08/hexo（jacman主题）修改导航链接为绝对路径/</id>
+    <published>2018-11-08T14:04:24.000Z</published>
+    <updated>2018-11-08T14:29:45.911Z</updated>
+    
+    <content type="html"><![CDATA[<p>#起始<br>    一直想自己搭建一个博客，但是没想到坑是这么的多，磕磕绊绊总算是可以开始写了，本人是java开发的一个小菜鸡，博客也是作为简单的一个学习记录吧。<br>从简单的事情做起,闲下来就会写一写，也算是督促自己吧。</p><p>#关于jacman导航栏链接的修改<br>    hexo提倡使用绝对路径，但是我想在我的导航栏里面加上一些自己的链接，配置了_config.yml<br>    menu:<br>        主页: /<br>        归档: /archives<br>        GitHub: <a href="https://github.com/liujunit" target="_blank" rel="noopener">https://github.com/liujunit</a><br>        CSDN: <a href="https://blog.csdn.net/liujun_for_java" target="_blank" rel="noopener">https://blog.csdn.net/liujun_for_java</a><br>        关于: /about<br>    但是这样的配置没有生效，跳转链接的时候还是会在GitHub前加上一个斜杠/<br>    于是就是开始了漫漫的搜索调试路，无论是百度还是google都找不到自己满意的答案<br>    索性自己开始查找修改jacman主题下文件，还是真实找到了</p><p>#修改的文件<br>    修改jacman文件夹下的themes\jacman\layout_partial\header.ejs文件头部<br>    ‘’’<br>        function root_for(path){<br>            path = path || ‘/‘<br>            var root = config.root;<br>            if (path.substring(0, root.length) !== root){<br>                if (path.substring(0, 1) === ‘/‘){<br>                path = root.substring(0, root.length - 1) + path;<br>                } else if(path.indexOf(‘http’) != -1){<br>                    path = path;<br>                } else {<br>                    path = root + path;<br>                }<br>            }<br>        return path;<br>        }<br>    ‘’’<br>    原先的js代码是没有对http协议是否包含的判断的，自己加个判断路径不变就可以了</p><p>#后记<br>    可能大家都是高手高手高高手，没有遇到过这个问题（或许遇到也自己解决了）。。。希望遇到的能有幸看到这篇文正吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#起始&lt;br&gt;    一直想自己搭建一个博客，但是没想到坑是这么的多，磕磕绊绊总算是可以开始写了，本人是java开发的一个小菜鸡，博客也是作为简单的一个学习记录吧。&lt;br&gt;从简单的事情做起,闲下来就会写一写，也算是督促自己吧。&lt;/p&gt;
+&lt;p&gt;#关于jacman导航栏链接的修
+      
+    
+    </summary>
+    
+      <category term="七七八八" scheme="http://yoursite.com/categories/%E4%B8%83%E4%B8%83%E5%85%AB%E5%85%AB/"/>
+    
+    
+      <category term="jacman" scheme="http://yoursite.com/tags/jacman/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="导航链接" scheme="http://yoursite.com/tags/%E5%AF%BC%E8%88%AA%E9%93%BE%E6%8E%A5/"/>
+    
+      <category term="绝对路径" scheme="http://yoursite.com/tags/%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/"/>
+    
+  </entry>
+  
+</feed>
