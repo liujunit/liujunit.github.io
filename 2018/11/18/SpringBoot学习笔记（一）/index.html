@@ -11,13 +11,13 @@
     
 
     
-    <meta name="description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必将过多">
+    <meta name="description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的">
 <meta name="keywords" content="SpringBoot,Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot学习笔记（一）">
 <meta property="og:url" content="https://liujunit.github.io/2018/11/18/SpringBoot学习笔记（一）/index.html">
 <meta property="og:site_name" content="Ljun&#39;s Blog">
-<meta property="og:description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必将过多">
+<meta property="og:description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/8718cb52753c4883b5c87f02d9718b5e.png">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/d3c5d3085cb844248874b98e2c9584da.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/6155b7e779ee40aea4615a92b4ecba03.png">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/5be70f95253d4f2690f86f76488f8757.png">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/6bd57a4467eb43efa8f7a410d7f5114e.png">
-<meta property="og:updated_time" content="2018-11-21T07:54:41.138Z">
+<meta property="og:updated_time" content="2018-11-25T07:09:24.028Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot学习笔记（一）">
-<meta name="twitter:description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必将过多">
+<meta name="twitter:description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的">
 <meta name="twitter:image" content="https://liujunit.github.io/img/2018-11-21/8718cb52753c4883b5c87f02d9718b5e.png">
 
     
@@ -121,7 +121,7 @@
 <p>J2EE开发的一站式解决方案；</p>
 </blockquote>
 <p>​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。</p>
-<p>​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必将过多的关注环境的准备以及上线时服务器环境的配置，SpringBoot可以将程序打成jar包，服务器上只要使用java -jar的命令就能将程序启动起来，而不必过多的去配置tomcat，因为SpringBoot已经将tomcat集成到了程序里。</p>
+<p>​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的关注环境的准备以及上线时服务器环境的配置，SpringBoot可以将程序打成jar包，服务器上只要使用java -jar的命令就能将程序启动起来，而不必过多的去配置tomcat，因为SpringBoot已经将tomcat集成到了程序里。</p>
 <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><blockquote>
 <p>jdk1.8    SpringBoot官方要求jdk的版本不得低于1.7</p>
 <p>maven3.X    maven3.3及以上版本</p>
@@ -196,6 +196,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev">
+ <a href="/2018/11/25/SpringBoot学习笔记（二）/" title="SpringBoot学习笔记（二）">
+  <strong>上一篇：</strong><br>
+  <span>
+  SpringBoot学习笔记（二）</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2018/11/11/重温数据库操作JDBC/" title="重温数据库操作JDBC">
@@ -247,7 +255,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/SpringBoot学习笔记/" title="SpringBoot学习笔记">SpringBoot学习笔记<sup>1</sup></a></li>
+			<li><a href="/categories/SpringBoot学习笔记/" title="SpringBoot学习笔记">SpringBoot学习笔记<sup>2</sup></a></li>
 		  
 		
 		  
@@ -268,6 +276,18 @@
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/SpringBoot/" title="SpringBoot">SpringBoot<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Maven/" title="Maven">Maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/jacman/" title="jacman">jacman<sup>1</sup></a></li>
 			
 		
@@ -281,14 +301,6 @@
 		
 			
 				<li><a href="/tags/绝对路径/" title="绝对路径">绝对路径<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/SpringBoot/" title="SpringBoot">SpringBoot<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Maven/" title="Maven">Maven<sup>1</sup></a></li>
 			
 		
 			
