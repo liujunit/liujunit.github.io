@@ -1,0 +1,505 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+  
+    <title>两个git远程仓库的同时更新 | Ljun&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ljun">
+    
+
+    
+    <meta name="description" content="前言原先的博客是放在github上的，但是github的站点不稳定，经常访问打不开，正好朋友租了个阿里的服务器，想想还是放到朋友的服务器上吧，然后就开始折腾，中途也是遇到了各种坑，搭建nginx，域名备案，gitlib安装，这里就简单的说下，gitlib前两天试着装上了，代码也可以上传了，但是发现这玩意占内存太大了，总是一卡一卡的，很是头疼，然后果断放弃，还是用最原始的git吧，但是也不想放弃gi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两个git远程仓库的同时更新">
+<meta property="og:url" content="https://liujunit.github.io/2018/12/01/两个git远程仓库的同时更新/index.html">
+<meta property="og:site_name" content="Ljun&#39;s Blog">
+<meta property="og:description" content="前言原先的博客是放在github上的，但是github的站点不稳定，经常访问打不开，正好朋友租了个阿里的服务器，想想还是放到朋友的服务器上吧，然后就开始折腾，中途也是遇到了各种坑，搭建nginx，域名备案，gitlib安装，这里就简单的说下，gitlib前两天试着装上了，代码也可以上传了，但是发现这玩意占内存太大了，总是一卡一卡的，很是头疼，然后果断放弃，还是用最原始的git吧，但是也不想放弃gi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/c59562738e4a5b0caa6b789fd9ee99ae.png">
+<meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/b9209e33627d5c5a9f3c317ebe30206e.png">
+<meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/84f0a7e5bcd45d129434a7ce558d486b.png">
+<meta property="og:updated_time" content="2018-12-01T08:36:23.351Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="两个git远程仓库的同时更新">
+<meta name="twitter:description" content="前言原先的博客是放在github上的，但是github的站点不稳定，经常访问打不开，正好朋友租了个阿里的服务器，想想还是放到朋友的服务器上吧，然后就开始折腾，中途也是遇到了各种坑，搭建nginx，域名备案，gitlib安装，这里就简单的说下，gitlib前两天试着装上了，代码也可以上传了，但是发现这玩意占内存太大了，总是一卡一卡的，很是头疼，然后果断放弃，还是用最原始的git吧，但是也不想放弃gi">
+<meta name="twitter:image" content="https://liujunit.github.io/img/2018-11-21/c59562738e4a5b0caa6b789fd9ee99ae.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Ljun&#39;s Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/author.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/author.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Ljun&#39;s Blog" title="Ljun&#39;s Blog"></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Ljun&#39;s Blog">Ljun&#39;s Blog</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="https://github.com/liujunit">GitHub</a></li>
+					
+						<li><a href="https://blog.csdn.net/liujun_for_java">CSDN</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value="954212470916055914"><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</ul></nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope="" itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/12/01/两个git远程仓库的同时更新/" title="两个git远程仓库的同时更新" itemprop="url">两个git远程仓库的同时更新</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ljun" target="_blank" itemprop="author">Ljun</a>
+		
+  </p><p class="article-time">
+    <time datetime="2018-12-01T07:34:24.000Z" itemprop="datePublished"> 发表于 2018-12-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx配置"><span class="toc-number">2.1.</span> <span class="toc-text">nginx配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git配置"><span class="toc-number">2.2.</span> <span class="toc-text">git配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地添加远程仓库地址"><span class="toc-number">2.3.</span> <span class="toc-text">本地添加远程仓库地址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后记"><span class="toc-number">3.</span> <span class="toc-text">后记</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>原先的博客是放在github上的，但是github的站点不稳定，经常访问打不开，正好朋友租了个阿里的服务器，想想还是放到朋友的服务器上吧，然后就开始折腾，中途也是遇到了各种坑，搭建nginx，域名备案，gitlib安装，这里就简单的说下，gitlib前两天试着装上了，代码也可以上传了，但是发现这玩意占内存太大了，总是一卡一卡的，很是头疼，然后果断放弃，还是用最原始的git吧，但是也不想放弃github上的更新，那么问题来了，如何本地修改后同时更新两个库呢？</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>nginx原先也只是简单的使用过，这里的思路是直接监听80端口，然后跳转到博客的静态页面，自己配置了下http连接跳转https，然后发现需要域名备案，就这样来回的折腾，但是https是不需要备案的，这里贴出配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80 default_server;</span><br><span class="line">        listen       [::]:80 default_server;</span><br><span class="line">        server_name  www.liujunit.com liujunit.com;</span><br><span class="line">        rewrite     ^(.*)$ https://www.liujunit.com permanent;</span><br><span class="line">        root         /usr/LjunBlog/public;</span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">            location = /40x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">            location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"># Settings for a TLS enabled server.</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen       443 ssl http2 default_server;</span><br><span class="line">        listen       [::]:443 ssl http2 default_server;</span><br><span class="line">        server_name  www.liujunit.com liujunit.com;</span><br><span class="line">        root         /usr/LjunBlog/public;</span><br><span class="line"></span><br><span class="line">        ssl_certificate &quot;/etc/pki/nginx/1547172_www.liujunit.com.pem&quot;;</span><br><span class="line">        ssl_certificate_key &quot;/etc/pki/nginx/1547172_www.liujunit.com.key&quot;;</span><br><span class="line">        ssl_session_cache shared:SSL:1m;</span><br><span class="line">        ssl_session_timeout  10m;</span><br><span class="line">        ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">        # Load configuration files for the default server block.</span><br><span class="line">        include /etc/nginx/default.d/*.conf;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 404 /404.html;</span><br><span class="line">            location = /40x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        error_page 500 502 503 504 /50x.html;</span><br><span class="line">            location = /50x.html &#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>https的配置是需要证书的，阿里的域名可以免费申请一个证书的，然后下载下来放到服务器上就可以了,好像有效期是一年吧，完了继续申请就可以了。</p>
+<h2 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h2><p>这里就不说git的安装以及公钥的上传配置，万能的百度和Google会告诉你的，就说下配置远程仓库。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/git</span><br><span class="line">git init --bare blog.git</span><br><span class="line">cd blog.git/hooks</span><br><span class="line">vim post-receive</span><br></pre></td></tr></table></figure>
+<p>git init –bare blog.git创建一个远程裸仓库</p>
+<p>然后新建一个配置文件post-receive，相当于指定工作空间吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">git --work-tree=/usr/LjunBlog/public --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
+<p>:wq!保存退出</p>
+<p>赋予这个配置文件权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
+<p>配置到这里基本上就可以了。</p>
+<h2 id="本地添加远程仓库地址"><a href="#本地添加远程仓库地址" class="headerlink" title="本地添加远程仓库地址"></a>本地添加远程仓库地址</h2><p>本人更新git远程仓库代码的时候一直用的是SourceTree，确实好用，选择原先的仓库在设置里添加远程仓库</p>
+<p><img src="\img\2018-11-21\c59562738e4a5b0caa6b789fd9ee99ae.png" alt=""></p>
+<p>选择刚才新加的远程地址拉取代码</p>
+<p><img src="\img\2018-11-21\b9209e33627d5c5a9f3c317ebe30206e.png" alt=""></p>
+<p>选择新增地址推送代</p>
+<p><img src="\img\2018-11-21\84f0a7e5bcd45d129434a7ce558d486b.png" alt=""></p>
+<p>基本步骤就是这样，每次推送的时候两个仓库都推送一遍就可以了。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>一直用SourceTree，基本上就是傻瓜式的操作，看来得好好看看git的一些知识了。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://liujunit.github.io/2018/12/01/两个git远程仓库的同时更新/" data-title="两个git远程仓库的同时更新 | Ljun&#39;s Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/12/01/SpringBoot学习笔记（三）/" title="SpringBoot学习笔记（三）">
+ <strong>下一篇：</strong><br> 
+ <span>SpringBoot学习笔记（三）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+<div id="lv-container" data-id="city" data-uid="MTAyMC80MDk2NC8xNzQ4OQ==">
+  <script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];  
+         if (typeof LivereTower === 'function') { return; }  
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;  
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+  </script>
+  <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+</div>
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx配置"><span class="toc-number">2.1.</span> <span class="toc-text">nginx配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git配置"><span class="toc-number">2.2.</span> <span class="toc-text">git配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地添加远程仓库地址"><span class="toc-number">2.3.</span> <span class="toc-text">本地添加远程仓库地址</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后记"><span class="toc-number">3.</span> <span class="toc-text">后记</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/SpringBoot学习笔记/" title="SpringBoot学习笔记">SpringBoot学习笔记<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/七七八八/" title="七七八八">七七八八<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/SpringBoot/" title="SpringBoot">SpringBoot<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SQL/" title="SQL">SQL<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jacman/" title="jacman">jacman<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Maven/" title="Maven">Maven<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/导航链接/" title="导航链接">导航链接<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/绝对路径/" title="绝对路径">绝对路径<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JDBC/" title="JDBC">JDBC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MySQL/" title="MySQL">MySQL<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer">
+	
+	
+	<div class="social-font">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="Ljun">Ljun</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
