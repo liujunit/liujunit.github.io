@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Ljun&#39;s Blog">
 <meta property="og:description" content="起始    一直想自己搭建一个博客，但是没想到坑是这么的多，磕磕绊绊总算是可以开始写了，本人做java开发的，博客也是 作为简单的一个学习记录吧。从简单的事情做起,闲下来就会写一写，也算是督促自己吧。 关于jacman导航栏链接的修改hexo提倡使用绝对路径，但是我想在我的导航栏里面加上一些自己的链接，配置了_config.yml 123456menu:    主页: /    归档: /arch">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-09T13:05:02.850Z">
+<meta property="og:updated_time" content="2018-12-03T08:22:52.179Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo（jacman主题）修改导航链接为绝对路径">
 <meta name="twitter:description" content="起始    一直想自己搭建一个博客，但是没想到坑是这么的多，磕磕绊绊总算是可以开始写了，本人做java开发的，博客也是 作为简单的一个学习记录吧。从简单的事情做起,闲下来就会写一写，也算是督促自己吧。 关于jacman导航栏链接的修改hexo提倡使用绝对路径，但是我想在我的导航栏里面加上一些自己的链接，配置了_config.yml 123456menu:    主页: /    归档: /arch">
@@ -47,7 +47,7 @@
 			</div>
 			
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Ljun&#39;s Blog">Ljun&#39;s Blog</a></h1>
+				<h1 class="site-name"><a href="/" title="不忘初心，方得始终">不忘初心，方得始终</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
@@ -115,7 +115,7 @@
 </code></pre><h1 id="修改的文件"><a href="#修改的文件" class="headerlink" title="修改的文件"></a>修改的文件</h1><pre><code>修改jacman文件夹下的themes\jacman\layout\_partial\header.ejs文件头部
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function root_for(path)&#123;</span><br><span class="line">    path = path || &apos;/&apos;</span><br><span class="line">    var root = config.root;</span><br><span class="line">    if (path.substring(0, root.length) !== root)&#123;</span><br><span class="line">        if (path.substring(0, 1) === &apos;/&apos;)&#123;</span><br><span class="line">        path = root.substring(0, root.length - 1) + path;</span><br><span class="line">        &#125; else if(path.indexOf(&apos;http&apos;) == 0)&#123;</span><br><span class="line">            path = path;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            path = root + path;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">return path;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <pre><code>原先的js代码是没有对http协议是否包含的判断的，自己加个判断路径不变就可以了
-</code></pre><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><pre><code>    可能大家都是高手高手高高手，没有遇到过这个问题（或许遇到也自己解决了）。。。希望遇到的能有幸看到这篇文正吧，
+</code></pre><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><pre><code>    可能大家都是高手高手高高手，没有遇到过这个问题（或许遇到也自己解决了）。。。希望遇到的能有幸看到这篇文章吧，
 样式后续慢慢调整吧。
 </code></pre>  
 	</div>
@@ -232,11 +232,11 @@
 			
 		
 			
-				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
+				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
+				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
 			
 		
 			
