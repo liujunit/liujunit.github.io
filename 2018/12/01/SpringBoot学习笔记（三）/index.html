@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Ljun&#39;s Blog">
 <meta property="og:description" content="SpringBoot配置文件操作@Value注解不管是yaml还是properties配置文件@Value都支持 上一次的时候我们使用的是@ConfigurationProperties进行的全部注入，这次使用@Value 两者的区别：     @ConfigurationProperties @Value     批量注入 支持 不支持   松散语法 支持 不支持   SpEl（Spring表达">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-01T08:34:22.988Z">
+<meta property="og:updated_time" content="2018-12-03T08:27:14.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot学习笔记（三）">
 <meta name="twitter:description" content="SpringBoot配置文件操作@Value注解不管是yaml还是properties配置文件@Value都支持 上一次的时候我们使用的是@ConfigurationProperties进行的全部注入，这次使用@Value 两者的区别：     @ConfigurationProperties @Value     批量注入 支持 不支持   松散语法 支持 不支持   SpEl（Spring表达">
@@ -47,7 +47,7 @@
 			</div>
 			
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Ljun&#39;s Blog">Ljun&#39;s Blog</a></h1>
+				<h1 class="site-name"><a href="/" title="不忘初心，方得始终">不忘初心，方得始终</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
@@ -173,7 +173,7 @@
 <h2 id="配置文件中的占位符"><a href="#配置文件中的占位符" class="headerlink" title="配置文件中的占位符"></a>配置文件中的占位符</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;random.value&#125;、$&#123;random.<span class="keyword">int</span>&#125;、$&#123;random.<span class="keyword">long</span>&#125;</span><br><span class="line">$&#123;random.<span class="keyword">int</span>(<span class="number">10</span>)&#125;、$&#123;random.<span class="keyword">int</span>[<span class="number">1024</span>,<span class="number">65536</span>]&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">person.name=Ljun$&#123;random.uuid&#125;</span><br><span class="line">person.age=$&#123;random.int(20)&#125;</span><br><span class="line">person.birth=1990/1/1</span><br><span class="line">person.boss=true</span><br><span class="line">person.map.k1=v1</span><br><span class="line">person.map.k2=12</span><br><span class="line">person.list=1,lilis,nihao</span><br><span class="line">person.dog.name=$&#123;person.sex:hello--&#125;pipi</span><br><span class="line">person.dog.age=2</span><br></pre></td></tr></table></figure>
 <p>person.sex不存在则会引用默认值hello–</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>贵在坚持！</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>贵在坚持</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -297,11 +297,11 @@
 			
 		
 			
-				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
+				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
+				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
 			
 		
 			

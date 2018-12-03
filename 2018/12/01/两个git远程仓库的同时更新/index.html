@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://liujunit.github.io/img/2018-12-01/c59562738e4a5b0caa6b789fd9ee99ae.jpg">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-12-01/b9209e33627d5c5a9f3c317ebe30206e.png">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-12-01/84f0a7e5bcd45d129434a7ce558d486b.png">
-<meta property="og:updated_time" content="2018-12-01T09:22:28.615Z">
+<meta property="og:updated_time" content="2018-12-03T08:28:29.672Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="两个git远程仓库的同时更新">
 <meta name="twitter:description" content="前言原先的博客是放在github上的，但是github的站点不稳定，经常访问打不开，正好朋友租了个阿里的服务器，想想还是放到朋友的服务器上吧，然后就开始折腾，中途也是遇到了各种坑，搭建nginx，域名备案，gitlib安装，这里就简单的说下，gitlib前两天试着装上了，代码也可以上传了，但是发现这玩意占内存太大了，总是一卡一卡的，很是头疼，然后果断放弃，还是用最原始的git吧，但是也不想放弃gi">
@@ -51,7 +51,7 @@
 			</div>
 			
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Ljun&#39;s Blog">Ljun&#39;s Blog</a></h1>
+				<h1 class="site-name"><a href="/" title="不忘初心，方得始终">不忘初心，方得始终</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
@@ -116,7 +116,7 @@
 <h2 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h2><p>这里就不说git的安装以及公钥的上传配置，万能的百度和Google会告诉你的，就说下配置远程仓库。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/git</span><br><span class="line">git init --bare blog.git</span><br><span class="line">cd blog.git/hooks</span><br><span class="line">vim post-receive</span><br></pre></td></tr></table></figure>
 <p>git init –bare blog.git创建一个远程裸仓库</p>
-<p>然后新建一个配置文件post-receive，相当于指定工作空间吧</p>
+<p>然后新建一个配置文件post-receive，相当于指定工作空间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">git --work-tree=/usr/LjunBlog/public --git-dir=/home/git/blog.git checkout -f</span><br></pre></td></tr></table></figure>
 <p>:wq!保存退出</p>
 <p>赋予这个配置文件权限</p>
@@ -245,11 +245,11 @@
 			
 		
 			
-				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
+				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
+				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
 			
 		
 			

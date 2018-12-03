@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Ljun&#39;s Blog">
 <meta property="og:description" content="前言    在日常的开发当中，我们总是用框架去连接数据库，去完成业务中的需求，但是不可避免的有时候我们需要对数据进行额外的处理， 批量的修改或查询，这时候用框架就显得有点杀鸡用牛刀了，在这里我们将重温原始的JDBC操作，好记性不如烂笔头。 JDBC操作步骤1.注册驱动 2.获取连接 3.获取预处理语句 4.添加占位符 5.结果遍历或者查询修改记录条数 6.释放资源 代码1.导入数据库连接需要的ja">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-11T05:52:25.572Z">
+<meta property="og:updated_time" content="2018-12-03T08:28:48.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重温数据库操作JDBC">
 <meta name="twitter:description" content="前言    在日常的开发当中，我们总是用框架去连接数据库，去完成业务中的需求，但是不可避免的有时候我们需要对数据进行额外的处理， 批量的修改或查询，这时候用框架就显得有点杀鸡用牛刀了，在这里我们将重温原始的JDBC操作，好记性不如烂笔头。 JDBC操作步骤1.注册驱动 2.获取连接 3.获取预处理语句 4.添加占位符 5.结果遍历或者查询修改记录条数 6.释放资源 代码1.导入数据库连接需要的ja">
@@ -47,7 +47,7 @@
 			</div>
 			
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Ljun&#39;s Blog">Ljun&#39;s Blog</a></h1>
+				<h1 class="site-name"><a href="/" title="不忘初心，方得始终">不忘初心，方得始终</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
@@ -121,58 +121,14 @@
 这里用的是预处理语句PreparedStatement（防止sql注入攻击）
 </code></pre><h1 id="对于JDBC的简单封装"><a href="#对于JDBC的简单封装" class="headerlink" title="对于JDBC的简单封装"></a>对于JDBC的简单封装</h1><pre><code>对于频繁的注册驱动获取连接我们可以进行简单的封装
 </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import java.sql.Connection;</span><br><span class="line">import java.sql.DriverManager;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line"></span><br><span class="line">public class JDBCUtils &#123;</span><br><span class="line"></span><br><span class="line">    private static final String DRIVERNAME = &quot;com.mysql.jdbc.Driver&quot;;</span><br><span class="line">    private static final String URL = &quot;jdbc:mysql://localhost:3306/test&quot;;</span><br><span class="line">    private static final String USER = &quot;root&quot;;</span><br><span class="line">    private static final String PASSWORD = &quot;asdfmin&quot;;</span><br><span class="line"></span><br><span class="line">    static &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            //1.注册驱动</span><br><span class="line">            Class.forName(DRIVERNAME);</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            System.out.println(&quot;注册驱动失败&quot;);</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Connection getConn() throws SQLException &#123;</span><br><span class="line">        //2.获取连接</span><br><span class="line">        Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);</span><br><span class="line">        //返回连接</span><br><span class="line">        return conn;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="测试封装的JDBC工具类"><a href="#测试封装的JDBC工具类" class="headerlink" title="测试封装的JDBC工具类"></a>测试封装的JDBC工具类</h1><pre><code>import org.junit.Test;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-public class DBUtilTest {
-
-    /**
-    * 测试封装的JDBCUtil
-    */
-    @Test
-    public void test01() {
-        Connection conn = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try {
-            //1.获取连接
-            conn = JDBCUtils.getConn();
-            //2.获取执行语句
-            String sql = &quot;select * from user&quot;;
-            preparedStatement = conn.prepareStatement(sql);
-            //3.添加占位符
-            //4.执行预处理语句
-            resultSet = preparedStatement.executeQuery();
-            //5.遍历结果集
-            while (resultSet.next()) {
-                String name = resultSet.getString(&quot;name&quot;);
-                System.out.println(&quot;name:&quot; + name);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            //6.释放资源
-            try {
-                resultSet.close();
-                preparedStatement.close();
-                conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-}
-</code></pre><h1 id="API的一些简单说明"><a href="#API的一些简单说明" class="headerlink" title="API的一些简单说明"></a>API的一些简单说明</h1><pre><code>执行预处理语句的API
+<h1 id="测试封装的JDBC工具类"><a href="#测试封装的JDBC工具类" class="headerlink" title="测试封装的JDBC工具类"></a>测试封装的JDBC工具类</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import org.junit.Test;</span><br><span class="line"></span><br><span class="line">import java.sql.Connection;</span><br><span class="line">import java.sql.PreparedStatement;</span><br><span class="line">import java.sql.ResultSet;</span><br><span class="line">import java.sql.SQLException;</span><br><span class="line"></span><br><span class="line">public class DBUtilTest &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">    * 测试封装的JDBCUtil</span><br><span class="line">    */</span><br><span class="line">    @Test</span><br><span class="line">    public void test01() &#123;</span><br><span class="line">        Connection conn = null;</span><br><span class="line">        PreparedStatement preparedStatement = null;</span><br><span class="line">        ResultSet resultSet = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            //1.获取连接</span><br><span class="line">            conn = JDBCUtils.getConn();</span><br><span class="line">            //2.获取执行语句</span><br><span class="line">            String sql = &quot;select * from user&quot;;</span><br><span class="line">            preparedStatement = conn.prepareStatement(sql);</span><br><span class="line">            //3.添加占位符</span><br><span class="line">            //4.执行预处理语句</span><br><span class="line">            resultSet = preparedStatement.executeQuery();</span><br><span class="line">            //5.遍历结果集</span><br><span class="line">            while (resultSet.next()) &#123;</span><br><span class="line">                String name = resultSet.getString(&quot;name&quot;);</span><br><span class="line">                System.out.println(&quot;name:&quot; + name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            //6.释放资源</span><br><span class="line">            try &#123;</span><br><span class="line">                resultSet.close();</span><br><span class="line">                preparedStatement.close();</span><br><span class="line">                conn.close();</span><br><span class="line">            &#125; catch (SQLException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="API的一些简单说明"><a href="#API的一些简单说明" class="headerlink" title="API的一些简单说明"></a>API的一些简单说明</h1><pre><code>执行预处理语句的API
 int executeUpdate(); --执行insert update delete语句.
 ResultSet executeQuery(); --执行select语句.
 boolean execute(); --执行select返回true 执行其他的语句返回false.
-</code></pre><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><pre><code>温故而知新。
-</code></pre>  
+</code></pre><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><pre><code>温故而知新
+</code></pre><p>​        </p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -295,11 +251,11 @@ boolean execute(); --执行select返回true 执行其他的语句返回false.
 			
 		
 			
-				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
+				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
+				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
 			
 		
 			

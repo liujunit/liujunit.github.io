@@ -11,13 +11,13 @@
     
 
     
-    <meta name="description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的">
+    <meta name="description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的关注环境的准备以及上">
 <meta name="keywords" content="SpringBoot,Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot学习笔记（一）">
 <meta property="og:url" content="https://liujunit.github.io/2018/11/18/SpringBoot学习笔记（一）/index.html">
 <meta property="og:site_name" content="Ljun&#39;s Blog">
-<meta property="og:description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的">
+<meta property="og:description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的关注环境的准备以及上">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/8718cb52753c4883b5c87f02d9718b5e.png">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/d3c5d3085cb844248874b98e2c9584da.png">
@@ -28,10 +28,10 @@
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/6155b7e779ee40aea4615a92b4ecba03.png">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/5be70f95253d4f2690f86f76488f8757.png">
 <meta property="og:image" content="https://liujunit.github.io/img/2018-11-21/6bd57a4467eb43efa8f7a410d7f5114e.png">
-<meta property="og:updated_time" content="2018-11-25T07:09:24.028Z">
+<meta property="og:updated_time" content="2018-12-03T08:26:37.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringBoot学习笔记（一）">
-<meta name="twitter:description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  ​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 ​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的">
+<meta name="twitter:description" content="Spring Boot 简介 简化Spring应用开发的一个框架； 整个Spring技术栈的一个大整合； J2EE开发的一站式解决方案；  微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。 SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的关注环境的准备以及上">
 <meta name="twitter:image" content="https://liujunit.github.io/img/2018-11-21/8718cb52753c4883b5c87f02d9718b5e.png">
 
     
@@ -57,7 +57,7 @@
 			</div>
 			
 			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Ljun&#39;s Blog">Ljun&#39;s Blog</a></h1>
+				<h1 class="site-name"><a href="/" title="不忘初心，方得始终">不忘初心，方得始终</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
 			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
@@ -120,47 +120,47 @@
 <p>整个Spring技术栈的一个大整合；</p>
 <p>J2EE开发的一站式解决方案；</p>
 </blockquote>
-<p>​    微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。</p>
-<p>​    SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的关注环境的准备以及上线时服务器环境的配置，SpringBoot可以将程序打成jar包，服务器上只要使用java -jar的命令就能将程序启动起来，而不必过多的去配置tomcat，因为SpringBoot已经将tomcat集成到了程序里。</p>
+<p>微服务是一种架构风格，每一个单个应用应该是一个小型服务，每个应用之间通过http进行相互之间的通信，这样每个单独的应用可以进行独立的升级和替换而不影响整体的功能。</p>
+<p>SpringBoot简化了开发的繁琐的环境搭建，以及应用部署，我们不必过多的关注环境的准备以及上线时服务器环境的配置，SpringBoot可以将程序打成jar包，服务器上只要使用java -jar的命令就能将程序启动起来，而不必过多的去配置tomcat，因为SpringBoot已经将tomcat集成到了程序里。</p>
 <h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><blockquote>
 <p>jdk1.8    SpringBoot官方要求jdk的版本不得低于1.7</p>
 <p>maven3.X    maven3.3及以上版本</p>
 <p>IntelliJIDEA2018    开发工具用的IDEA，目前应该算是最流行也是最好用的，版本只要是16以上的都没问题</p>
 <p>SpringBoot2.1.0.RELEASE    2.1.0我这里用的是最新的版本</p>
 </blockquote>
-<h2 id="maven配置"><a href="#maven配置" class="headerlink" title="maven配置"></a>maven配置</h2><h3 id="配置阿里云镜像"><a href="#配置阿里云镜像" class="headerlink" title="配置阿里云镜像"></a>配置阿里云镜像</h3><p>​    引入大批量的jar没有国内镜像，这个下载的过程总是痛苦的，所以我推荐大家最好还是用阿里的镜像，体验下什么是波音747的感觉。在mirrors标签里添加如下：</p>
+<h2 id="maven配置"><a href="#maven配置" class="headerlink" title="maven配置"></a>maven配置</h2><h3 id="配置阿里云镜像"><a href="#配置阿里云镜像" class="headerlink" title="配置阿里云镜像"></a>配置阿里云镜像</h3><p>引入大批量的jar没有国内镜像，这个下载的过程总是痛苦的，所以我推荐大家最好还是用阿里的镜像，体验下什么是波音747的感觉。在mirrors标签里添加如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="配置profiles"><a href="#配置profiles" class="headerlink" title="配置profiles"></a>配置profiles</h3><p>​    添加本地的运行打包环境, 在profiles中添加如下：</p>
+<h3 id="配置profiles"><a href="#配置profiles" class="headerlink" title="配置profiles"></a>配置profiles</h3><p>添加本地的运行打包环境, 在profiles中添加如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>jdk-1.8<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activation</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 激活配置的环境 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeByDefault</span>&gt;</span>true<span class="tag">&lt;/<span class="name">activeByDefault</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">jdk</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">jdk</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activation</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.source</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">maven.compiler.source</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.target</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">maven.compiler.target</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">maven.compiler.compilerVersion</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">maven.compiler.compilerVersion</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="IDEA的设置"><a href="#IDEA的设置" class="headerlink" title="IDEA的设置"></a>IDEA的设置</h2><p>​    我们使用的IDEA可以在默认配置中修改关于maven的引用，将自带的maven替换成我们自己的，首先寻找默认配置：</p>
+<h2 id="IDEA的设置"><a href="#IDEA的设置" class="headerlink" title="IDEA的设置"></a>IDEA的设置</h2><p>我们使用的IDEA可以在默认配置中修改关于maven的引用，将自带的maven替换成我们自己的，首先寻找默认配置：</p>
 <p><img src="\img\2018-11-21\8718cb52753c4883b5c87f02d9718b5e.png" alt=""></p>
 <p>修改默认maven配置点击保存：</p>
 <p><img src="\img\2018-11-21\d3c5d3085cb844248874b98e2c9584da.png" alt=""></p>
-<h1 id="两种快速搭建的方式"><a href="#两种快速搭建的方式" class="headerlink" title="两种快速搭建的方式"></a>两种快速搭建的方式</h1><p>​    快速搭建有两种方式，一种是本地自己手动maven构建，一种是从官方下载模板构建</p>
-<h2 id="本地maven构建"><a href="#本地maven构建" class="headerlink" title="本地maven构建"></a>本地maven构建</h2><p>​    创建一个maven工程，不使用任何的预设好的原型</p>
+<h1 id="两种快速搭建的方式"><a href="#两种快速搭建的方式" class="headerlink" title="两种快速搭建的方式"></a>两种快速搭建的方式</h1><p>快速搭建有两种方式，一种是本地自己手动maven构建，一种是从官方下载模板构建</p>
+<h2 id="本地maven构建"><a href="#本地maven构建" class="headerlink" title="本地maven构建"></a>本地maven构建</h2><p>创建一个maven工程，不使用任何的预设好的原型</p>
 <p><img src="\img\2018-11-21\df29629f35ae4497a58fca23f950e5be.png" alt=""></p>
-<p>​    maven中添加依赖，指定版本，从导入的jar包中可以看出SpringBoot已经将我们平常开发所需要的基本的jar包都添加到了父依赖当中，省去了我们不必要的一些整合，包扩一些默认的配置（例如tomca的端口号），在以后的文章中会提到如何如何修改这些默认配置。</p>
+<p>maven中添加依赖，指定版本，从导入的jar包中可以看出SpringBoot已经将我们平常开发所需要的基本的jar包都添加到了父依赖当中，省去了我们不必要的一些整合，包扩一些默认的配置（例如tomca的端口号），在以后的文章中会提到如何如何修改这些默认配置。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Inherit defaults from Spring Boot 导入父依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Add typical dependencies for a web application 导入我们需要的模块--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Package as an executable jar 导入maven打包的插件--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>​    编写启动类</p>
+<p>编写启动类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.liujunit;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@SpringBootApplication</span> 用来标注这是一个SpringBoot的应用程序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//用来启动这个应用程序</span></span><br><span class="line">        SpringApplication.run(HelloWorldMainApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    写一个HelloController来进行测试</p>
+<p>写一个HelloController来进行测试</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.liujunit.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>​    运行启动类，浏览器访问<a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a></p>
+<p>运行启动类，浏览器访问<a href="http://localhost:8080/hello" target="_blank" rel="noopener">http://localhost:8080/hello</a></p>
 <p><img src="\img\2018-11-21\ac3e84dfa5cb49cb83c5a4bfc3aaf73b.png" alt=""></p>
-<p>​    是不是很快！！！在这整个的过程中我们没有进行任何的配置，默认启用tomcat的8080端口。</p>
-<h2 id="使用Spring-Initializr联网构建"><a href="#使用Spring-Initializr联网构建" class="headerlink" title="使用Spring Initializr联网构建"></a>使用Spring Initializr联网构建</h2><p>​    IDEA新建项目的时候选用Spring Initializr，默认官方网址就可以了</p>
+<p>是不是很快！！！在这整个的过程中我们没有进行任何的配置，默认启用tomcat的8080端口。</p>
+<h2 id="使用Spring-Initializr联网构建"><a href="#使用Spring-Initializr联网构建" class="headerlink" title="使用Spring Initializr联网构建"></a>使用Spring Initializr联网构建</h2><p>IDEA新建项目的时候选用Spring Initializr，默认官方网址就可以了</p>
 <p><img src="\img\2018-11-21\6468595841f846b0b09d88b918ab0741.png" alt=""></p>
-<p>​    填写组织和项目标识就可以了，其他默认，打包方式是jar包的形式</p>
+<p>填写组织和项目标识就可以了，其他默认，打包方式是jar包的形式</p>
 <p><img src="\img\2018-11-21\c3dc6480e71847bf870e2bf17ea71942.png" alt=""></p>
-<p>​    这里我们初步只勾选web就可以了，这里面有许多我们可以预选择的一些集成</p>
+<p>这里我们初步只勾选web就可以了，这里面有许多我们可以预选择的一些集成</p>
 <p><img src="\img\2018-11-21\6155b7e779ee40aea4615a92b4ecba03.png" alt=""></p>
-<p>​    删掉一些没有用的文件，可以看下目录结构都给我们建好了包扩启动类，其中resource下的static中主要放一些前台静态文件，templates主要放一些前端的模板，SpringBoot不支持jsp，推荐使用thymeleaf 或者freemarker。</p>
+<p>删掉一些没有用的文件，可以看下目录结构都给我们建好了包扩启动类，其中resource下的static中主要放一些前台静态文件，templates主要放一些前端的模板，SpringBoot不支持jsp，推荐使用thymeleaf 或者freemarker。</p>
 <p><img src="\img\2018-11-21\5be70f95253d4f2690f86f76488f8757.png" alt=""></p>
-<p>​    同第一种方式一样，运行启动，在浏览器看到同样的结果, 而且控制台是彩色的有木有很装逼的样子。</p>
-<h1 id="打包部署"><a href="#打包部署" class="headerlink" title="打包部署"></a>打包部署</h1><p>​    打包部署更是简单，点击package就会在target文件下生成一个jar包。</p>
+<p>同第一种方式一样，运行启动，在浏览器看到同样的结果, 而且控制台是彩色的有木有很装逼的样子。</p>
+<h1 id="打包部署"><a href="#打包部署" class="headerlink" title="打包部署"></a>打包部署</h1><p>打包部署更是简单，点击package就会在target文件下生成一个jar包。</p>
 <p><img src="\img\2018-11-21\6bd57a4467eb43efa8f7a410d7f5114e.png" alt=""></p>
-<p>​    将这个jar包粘贴到任意文件夹下使用命令行java -jar的就可以启动，真的简单好用。</p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>​    SpringBoot是趋势，觉得还是很有必要学一学的。后面会继续更新，图片粘贴复制真的麻烦。</p>
+<p>将这个jar包粘贴到任意文件夹下使用命令行java -jar的就可以启动，真的简单好用。</p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>SpringBoot是趋势，觉得还是很有必要学一学的。后面会继续更新，图片粘贴复制真的麻烦。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -284,11 +284,11 @@
 			
 		
 			
-				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
+				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
+				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
 			
 		
 			
