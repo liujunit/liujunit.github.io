@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
     <title>重温数据库操作JDBC | Ljun&#39;s Blog</title>
@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Ljun&#39;s Blog">
 <meta property="og:description" content="前言    在日常的开发当中，我们总是用框架去连接数据库，去完成业务中的需求，但是不可避免的有时候我们需要对数据进行额外的处理， 批量的修改或查询，这时候用框架就显得有点杀鸡用牛刀了，在这里我们将重温原始的JDBC操作，好记性不如烂笔头。 JDBC操作步骤1.注册驱动 2.获取连接 3.获取预处理语句 4.添加占位符 5.结果遍历或者查询修改记录条数 6.释放资源 代码1.导入数据库连接需要的ja">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-19T12:56:48.876Z">
+<meta property="og:updated_time" content="2019-07-24T14:18:50.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重温数据库操作JDBC">
 <meta name="twitter:description" content="前言    在日常的开发当中，我们总是用框架去连接数据库，去完成业务中的需求，但是不可避免的有时候我们需要对数据进行额外的处理， 批量的修改或查询，这时候用框架就显得有点杀鸡用牛刀了，在这里我们将重温原始的JDBC操作，好记性不如烂笔头。 JDBC操作步骤1.注册驱动 2.获取连接 3.获取预处理语句 4.添加占位符 5.结果遍历或者查询修改记录条数 6.释放资源 代码1.导入数据库连接需要的ja">
@@ -43,7 +43,7 @@
 <div>
 		
 			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="Ljun&#39;s Blog" title="Ljun&#39;s Blog"></a>
+				<a href="/"><img src="/img/logo.png" alt="Ljun&#39;s Blog" title="Ljun&#39;s Blog"/></a>
 			</div>
 			
 			<div id="textlogo">
@@ -70,16 +70,16 @@
  					
 						<form class="search" action="http://zhannei.baidu.com/cse/search" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value="954212470916055914"><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 954212470916055914 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
 				</ul>
-			</ul></nav>			
+			</nav>			
 </div>
     </header>
     <div id="container">
-      <div id="main" class="post" itemscope="" itemprop="blogPost">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
@@ -91,7 +91,7 @@
        
 		<a href="/about" title="Ljun" target="_blank" itemprop="author">Ljun</a>
 		
-  </p><p class="article-time">
+  <p class="article-time">
     <time datetime="2018-11-11T05:07:57.000Z" itemprop="datePublished"> 发表于 2018-11-11</time>
     
   </p>
@@ -163,9 +163,9 @@ boolean execute(); --执行select返回true 执行其他的语句返回false.
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
+ <div class="prev" >
  <a href="/2018/11/18/SpringBoot学习笔记（一）/" title="SpringBoot学习笔记（一）">
-  <strong>上一篇：</strong><br>
+  <strong>上一篇：</strong><br/>
   <span>
   SpringBoot学习笔记（一）</span>
 </a>
@@ -173,8 +173,8 @@ boolean execute(); --执行select返回true 执行其他的语句返回false.
 
 
 <div class="next">
-<a href="/2018/11/08/hexo（jacman主题）修改导航链接为绝对路径/" title="hexo（jacman主题）修改导航链接为绝对路径">
- <strong>下一篇：</strong><br> 
+<a href="/2018/11/08/hexo（jacman主题）修改导航链接为绝对路径/"  title="hexo（jacman主题）修改导航链接为绝对路径">
+ <strong>下一篇：</strong><br/> 
  <span>hexo（jacman主题）修改导航链接为绝对路径
 </span>
 </a>
@@ -259,11 +259,11 @@ boolean execute(); --执行select返回true 执行其他的语句返回false.
 			
 		
 			
-				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
+				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/yaml/" title="yaml">yaml<sup>1</sup></a></li>
+				<li><a href="/tags/注解/" title="注解">注解<sup>1</sup></a></li>
 			
 		
 			
@@ -317,10 +317,10 @@ boolean execute(); --执行select返回true 执行其他的语句返回false.
 </aside>
 </div>
     </div>
-    <footer><div id="footer">
+    <footer><div id="footer" >
 	
 	
-	<div class="social-font">
+	<div class="social-font" class="clearfix">
 		
 		
 		
@@ -526,7 +526,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
